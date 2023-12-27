@@ -1,14 +1,11 @@
 package com.in28minutes.rest.webservices.restfulwebservices.filtering;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFilter;
 
-// @JsonIgnoreProperties, @JsonIgnore 둘 다 정적 필터링 가능
-@JsonIgnoreProperties({"field1", "field3"})	// field1, field3를 필터링
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
 	
 	private String field1;
-	@JsonIgnore	// field2를 필터링
 	private String field2;
 	private String field3;
 	
