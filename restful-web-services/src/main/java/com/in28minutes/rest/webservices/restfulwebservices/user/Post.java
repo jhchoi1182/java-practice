@@ -7,6 +7,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Post {
@@ -15,6 +16,7 @@ public class Post {
 	@GeneratedValue
 	private Integer id;
 	
+	@Size(min = 10)
 	private String description;
 	
 	// 다대일의 관계, 응답에 user를 포함시키려는 것은 아님
@@ -38,11 +40,17 @@ public class Post {
 		this.description = description;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", description=" + description + "]";
 	}
-
-	
 
 }
