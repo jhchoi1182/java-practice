@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservices.restfulwebservices.user;
+package com.in28minutes.rest.webservices.restfulwebservices.jpa;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -6,11 +6,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,32 +19,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.in28minutes.rest.webservices.restfulwebservices.user.User;
+import com.in28minutes.rest.webservices.restfulwebservices.user.UserNotFoundException;
+
 import jakarta.validation.Valid;
 
 @RestController
-public class UserResource {
+public class UserJpaResource {
 	
-	private UserDaoService service;
+	private UserRepository repository;
 
-	public UserResource(UserDaoService service) {
-		this.service = service;
+	public UserJpaResource(UserRepository repository) {
+		this.repository = repository;
 	}
 
-	@GetMapping("/users")
+	@GetMapping("/jpa/users")
 	public List<User> retrieveAllUsers() {
-		return service.findAll();
+		return repository.findAll();
 	}
 	
-	@GetMapping("/users/{id}")
+	@GetMapping("/jpa/users/{id}")
 	// EntityModel 설정
 	public EntityModel<User> retrieveUser(@PathVariable int id) {
-		User user = service.findOne(id);
+		// findById는 Optional<T>를 반환
+		Optional<User> user = repository.findById(id);
 		
-		if(user==null)
+		if(user.isEmpty())
 			throw new UserNotFoundException("id:"+id);
 		
 		// EntityModel 클래스 인스턴스 생성
-		EntityModel<User> entityModel = EntityModel.of(user);
+		EntityModel<User> entityModel = EntityModel.of(user.get());
 		
 		// WebMvcLinkBuilder - 스프링 MVC 컨트롤러를 가리키는 링크 인스턴스 구축을 용이하게 해주는 빌더
 		// EntityModel에 WebMvcLinkBuilder를 이용해 retrieveAllUsers 링크 추가
@@ -55,10 +59,10 @@ public class UserResource {
 		return entityModel;
 	}
 	
-	@PostMapping("/users")
+	@PostMapping("/jpa/users")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
 		
-		User savedUser = service.save(user);
+		User savedUser = repository.save(user);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest()	// 현재 요청에 해당하는 URL를 반환
 						.path("/{id}")	// URL에 추가
@@ -71,8 +75,8 @@ public class UserResource {
 		return ResponseEntity.created(location).build();
 	}
 	
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/jpa/users/{id}")
 	public void deleteUser(@PathVariable int id) {
-		service.deleteById(id);
+		repository.deleteById(id);
 	}
 }
