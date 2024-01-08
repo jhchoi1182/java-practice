@@ -9,31 +9,24 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-@Configuration
+// @Configuration
 public class BasicAuthenticationSecurityConfiguration {
-
-    //Filter chain
-    // authenticate all requests
-    //basic authentication
-    //disabling csrf
-    //stateless rest api
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        return
-                http
-                        .authorizeHttpRequests(
-                                auth ->
-                                        auth
-                                                .anyRequest().authenticated()
-                        )
-                        .httpBasic(withDefaults())
-                        .sessionManagement(
-                                session -> session.sessionCreationPolicy
-                                        (SessionCreationPolicy.STATELESS))
-                        .csrf().disable()
-                        .build();
+        // OPTIONS 요청을 제외(인증API에 필요)한 모든 요청에 인증 필요
+        http.authorizeHttpRequests(
+                auth -> auth.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated()
+        );
+
+        // 팝업으로 뜨도록 설정
+        http.httpBasic(withDefaults());
+
+        // CSRF를 해제해서 POST 요청을 보낼 수 있게 설정
+        http.csrf(csrf -> csrf.disable());
+
+        return http.build();
     }
 
 }
