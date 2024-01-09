@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,6 +20,7 @@ import javax.sql.DataSource;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
+@EnableMethodSecurity(jsr250Enabled = true, securedEnabled = true)
 public class BasicAuthenticationSecurityConfiguration {
 
     @Bean
@@ -42,7 +44,7 @@ public class BasicAuthenticationSecurityConfiguration {
         // CSRF를 해제해서 POST 요청을 보낼 수 있게 설정
         http.csrf(AbstractHttpConfigurer::disable);
 
-        http.headers().frameOptions().sameOrigin();
+        http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 
         return http.build();
     }
