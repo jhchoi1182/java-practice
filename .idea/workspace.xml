@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ee8366b-c5f5-4fff-ac40-6c3e411734dd" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/mvc-practice/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc-practice/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc-practice/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc-practice/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop-practice/src/test/java/example/PasswordValidationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,16 +33,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main 리베이스 중",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/yhhnn/Desktop/dev/backend/Udemy/spring-practice"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main 리베이스 중&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yhhnn/Desktop/dev/backend/Udemy/spring-practice&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="spring-practice" />
