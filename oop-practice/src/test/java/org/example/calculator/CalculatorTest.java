@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CalculatorTest {
@@ -29,5 +30,13 @@ public class CalculatorTest {
                 arguments(4, "*", 2, 8),
                 arguments(4, "/", 2, 2)
         );
+    }
+
+    @DisplayName("나눗셈에서 0으로 나눌 경우 IllegalArgumentException 예외를 발생시킨다.")
+    @Test
+    void calculateExceptionTest() {
+        assertThatCode(() -> Calculator.calculate(10, "/", 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("0으로 나눌 수 없습니다.");
     }
 }
