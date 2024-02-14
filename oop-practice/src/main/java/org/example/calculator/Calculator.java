@@ -1,8 +1,25 @@
 package org.example.calculator;
 
-public class Calculator {
+import org.example.calculator.calculate.*;
 
-    public static int calculate(int operand1, String operator, int operand2) {
-        return EnumArithmeticOperator.calculate(operand1, operator, operand2);
+import java.util.List;
+
+public class Calculator {
+    private static final List<InterfaceArithmeticOperator> arithmeticOperator
+            = List.of(
+                    new AdditionOperator(),
+                    new SubtractionOperator(),
+                    new MultiplicationOperator(),
+                    new DivisionOperator()
+            );
+
+
+    public static int calculate(PositiveNumber operand1, String operator, PositiveNumber operand2) {
+        return arithmeticOperator.stream()
+                .filter(arithmeticOperator -> arithmeticOperator.IsSupports(operator))
+                .map(arithmeticOperator -> arithmeticOperator.calculate(operand1, operand2))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("올바른 사칙 연산이 아닙니다."));
+
     }
 }
