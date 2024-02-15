@@ -1,23 +1,15 @@
 package org.example.gradeCalculator;
 
-import java.util.List;
-
 public class GradeCalculator {
-    private final List<Course> courses;
+    private final Courses courses;
 
-    public GradeCalculator(List<Course> courses) {
+    public GradeCalculator(Courses courses) {
         this.courses = courses;
     }
 
     public double calculateGrade() {
-        double totalMultipliedCreditAndCourseGrade = 0;
-        for(Course course: courses) {
-            totalMultipliedCreditAndCourseGrade += course.multiplyCreditAndCourseGrade();
-        }
-
-        int totalCompletedCredit = courses.stream()
-                .mapToInt(Course::getCredit)
-                .sum();
+        double totalMultipliedCreditAndCourseGrade = courses.multiplyCreditAndCourseGrade();
+        int totalCompletedCredit = courses.calculateTotalCompletedCredit();
 
         return totalMultipliedCreditAndCourseGrade / totalCompletedCredit;
     }
