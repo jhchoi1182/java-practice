@@ -17,6 +17,4 @@
 **learn-spring-security** - Spring Security 연습
 <br>
 **oop-practice** - java 및 테스트 코드 연습
-<br>
-**mvc-practice** - 스프링 프레임워크 없이 웹 구축 연습
 

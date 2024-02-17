@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4ee8366b-c5f5-4fff-ac40-6c3e411734dd" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oop-practice/src/test/java/example/PasswordValidationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
